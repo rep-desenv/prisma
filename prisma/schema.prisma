@@ -11,32 +11,33 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  email       String   @unique
-  name        String
-  create_at   DateTime @default(now())
-  last_upd_at DateTime @default(now())
-  Post        Post[]
+  id         Int      @id @default(autoincrement())
+  //email      String   @unique //Vou retirar a unicidade para facilitar o teste
+  email      String
+  name       String
+  create_at  DateTime @default(now())
+  updated_at DateTime @default(now())
+  Post       Post[]
   //profile     Profile  @relation(fields: [idProfile], references: [id])
   //idProfile   Int
-  profile     Profile? @relation(fields: [profileId], references: [id])
-  profileId   Int?
+  profile    Profile? @relation(fields: [profileId], references: [id])
+  profileId  Int?
 }
 
 model Post {
-  id          Int      @id @default(autoincrement())
-  content     String
-  create_at   DateTime @default(now())
-  last_upd_at DateTime @default(now())
-  user        User     @relation(fields: [idUser], references: [id])
-  idUser      Int
+  id         Int      @id @default(autoincrement())
+  content    String
+  create_at  DateTime @default(now())
+  updated_at DateTime @default(now())
+  user       User     @relation(fields: [idUser], references: [id])
+  idUser     Int
 }
 
 model Profile {
-  id          Int      @id @default(autoincrement())
-  create_at   DateTime @default(now())
-  last_upd_at DateTime @default(now())
-  nome        String
-  status      Boolean  @default(true)
-  User        User[]
+  id         Int      @id @default(autoincrement())
+  create_at  DateTime @default(now())
+  updated_at DateTime @default(now())
+  nome       String
+  status     Boolean  @default(false)
+  User       User[]
 }

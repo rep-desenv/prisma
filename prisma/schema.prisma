@@ -17,8 +17,10 @@ model User {
   create_at   DateTime @default(now())
   last_upd_at DateTime @default(now())
   Post        Post[]
-  profile     Profile  @relation(fields: [idProfile], references: [id])
-  idProfile   Int
+  //profile     Profile  @relation(fields: [idProfile], references: [id])
+  //idProfile   Int
+  profile     Profile? @relation(fields: [profileId], references: [id])
+  profileId   Int?
 }
 
 model Post {

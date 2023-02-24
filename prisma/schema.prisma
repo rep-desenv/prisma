@@ -12,12 +12,13 @@ datasource db {
 
 model User {
   id         Int      @id @default(autoincrement())
-  //email      String   @unique //Vou retirar a unicidade para facilitar o teste
-  email      String
+  email      String   @unique //Vou retirar a unicidade para facilitar o teste
+  //email      String
   name       String
   create_at  DateTime @default(now())
   updated_at DateTime @default(now())
   Post       Post[]
+  status     Boolean @default(true)
   //profile     Profile  @relation(fields: [idProfile], references: [id])
   //idProfile   Int
   profile    Profile? @relation(fields: [profileId], references: [id])
